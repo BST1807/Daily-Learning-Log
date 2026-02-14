@@ -1,0 +1,13 @@
+AggregatorV3Interface: This is the primary interface that smart contracts use to interact with Chainlink price feeds. It provides a standardized way to fetch reliable, decentralized price data for various assets (like ETH/USD, BTC/USD, etc.) on-chain.
+
+The Interface Functions: latestRoundData() - The most commonly used function that returns:
+
+roundId - The round ID for this data update
+answer - The actual price (scaled by decimals)
+startedAt - Timestamp when the round started
+updatedAt - Timestamp when the round was updated
+answeredInRound - Deprecated field, previously used for round tracking
+
+decimals() - Returns how many decimal places the price has. For example, if decimals returns 8, a price of 100000000 represents $1.00. description() - Returns a human-readable description of the feed (e.g., "ETH / USD")
+version() - Returns the interface version
+getRoundData(uint80 _roundId) - Fetches historical data for a specific round, returning the same fields as latestRoundData()
