@@ -2,4 +2,5 @@ liquidation
 gluon basic understanding(reactor, vault system, logic machine handling minting and burning)
 pyth-oracle provider
 adapter
+peg: Fixing the value of one asset to another asset.
 
