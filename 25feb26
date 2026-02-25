@@ -1,3 +1,9 @@
-sql, select join- left inner, count , group by, where, as , order by
+sql, select join- left inner, count , group by, where, as , order by, khud ke saath bhi table ko join kr skte h, join = inner join, INNER JOIN → Only matches
+
+LEFT JOIN → All left + matches
+
+RIGHT JOIN → All right + matches
+
+FULL JOIN → Everything
 In optimisation mtd, i am getting to know how to find min. of multidimensional function, if equating gradient directly to zero gives values of x's then fine otherwise we need unconstrained min. alog like Classical Newton Algo
 eigenvectors are those vectors whose direction don't change on multiplication with a matrix
