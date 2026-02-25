@@ -1,2 +1,3 @@
 sql, select join- left inner, count , group by, where, as , order by
 In optimisation mtd, i am getting to know how to find min. of multidimensional function, if equating gradient directly to zero gives values of x's then fine otherwise we need unconstrained min. alog like Classical Newton Algo
+eigenvectors are those vectors whose direction don't change on multiplication with a matrix
