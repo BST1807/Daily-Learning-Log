@@ -1,2 +1,57 @@
 planning
 avg, round in sql
+what memo does is it memories the component and remembers values that are passing to it’s wrapped component and when those values changes only then it renders it’s component. using this we can prevent rerender of child coomponent even when parent component rerenders. limitation of memo, memo only memorize the value not functions / objects.
+In React, functions are recreated on every render.
+
+import React, { useState } from "react";
+
+function Parent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <Child onClick={handleClick} />
+    </div>
+  );
+}
+
+function Child({ onClick }) {
+  console.log("Child rendered");
+  return <button onClick={onClick}>Click Me</button>;
+}
+
+What happens?
+
+Every time count changes:
+
+Parent re-renders
+
+handleClick is created again
+
+Child receives a new function reference
+
+Child re-renders
+
+Even though nothing in Child actually changed.
+
+FIX:  const handleClick = useCallback(() => {
+    console.log("Button clicked");
+  }, []);
+handleClick is not recreated every render
+
+The same function reference is reused
+
+Child doesn't re-render unnecessarily
+
+useMemo is used to memoize a computed value.
+
+It avoids recomputing expensive calculations.
+
+memo, usememo, usecallback  These three terms are from React and are used for performance optimization. They help prevent unnecessary re-computations or re-renders.
+
+They all relate to the idea of memoization.
