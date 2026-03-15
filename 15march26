@@ -1,1 +1,1 @@
-sql: having, ifnull
+sql: having, ifnull, null/0= null
