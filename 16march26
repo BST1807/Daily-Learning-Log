@@ -1,1 +1,2 @@
 sql: null/null=null
+from a,b will create a cross join between a and b
