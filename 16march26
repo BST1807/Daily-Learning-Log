@@ -2,3 +2,5 @@ sql: null/null=null
 from a,b will create a cross join between a and b
 we do not write where inside aggregator function instead we have case when eg: (CASE WHEN rating < 3 THEN 1 ELSE 0 END)
 avg, boolean conditions use krna eg: avg(rating<3)
+select date_format(trans_date,"%Y-%m") as month, these are just converting date into string like 2018-12 and group by will work by considering and matching them as strings,sql here does not know the concept of month,
+sum(case when state="approved" then amount else 0 end)
