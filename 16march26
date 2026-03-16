@@ -1,2 +1,3 @@
 sql: null/null=null
 from a,b will create a cross join between a and b
+we do not write where inside aggregator function instead we have case when eg: (CASE WHEN rating < 3 THEN 1 ELSE 0 END)
