@@ -1,0 +1,21 @@
+SELECT class 
+FROM courses
+WHERE COUNT(*) >= 5
+GROUP BY class; is wrong bcs 
+COUNT() is an aggregate function, and aggregate functions cannot be used in the WHERE clause.
+
+SQL execution order explains why.
+
+SQL execution order
+
+FROM
+
+WHERE
+
+GROUP BY
+
+HAVING
+
+SELECT
+
+So when WHERE runs, the grouping has not happened yet, therefore COUNT() does not exist yet.
