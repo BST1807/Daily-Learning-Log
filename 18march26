@@ -19,3 +19,6 @@ HAVING
 SELECT
 
 So when WHERE runs, the grouping has not happened yet, therefore COUNT() does not exist yet.
+WHERE filters rows before grouping
+
+HAVING filters groups after aggregation
