@@ -1,1 +1,2 @@
 lenght is a scalar function, ie it works row by row and not an aggregator funtion so we don't write group by
+string functions
