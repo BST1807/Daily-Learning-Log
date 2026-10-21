@@ -1,0 +1,64 @@
+## 📅 October 21, 2026: Stacks, Queues, and Parenthesis Matching
+
+### 🧠 Topics Covered
+* Queues and Stacks implementations in Python.
+* LeetCode 678: Valid Parenthesis String.
+* Standard Valid Parentheses logic and Python syntax gotchas.
+
+### 💡 Key Learnings
+
+#### 1. Queues in Python (FIFO)
+* **Concept:** First-In-First-Out.
+* **With Lists:** You can use a standard Python list as a queue by using `.append(item)` to enqueue and `.pop(0)` to dequeue. 
+* **Performance Trap:** Using `.pop(0)` on a standard list is **$O(n)$** time because Python has to shift all remaining elements in memory. 
+* **Best Practice:** For production, use `collections.deque` which provides `appendleft()` and `popleft()` with **$O(1)$** constant time complexity.
+
+#### 2. Stacks in Python (LIFO)
+* **Concept:** Last-In-First-Out.
+* **With Lists:** Python lists are perfectly optimized to act as Stacks natively.
+* **Methods:** Use `.append(item)` to push, `.pop()` to pop, and `list[-1]` to peek. All of these operate in **$O(1)$** time.
+* **Syntax Note:** Unlike other languages (C++, Java), Python lists do not use `.push()` or `.empty()`. To check if a stack is empty, simply use `if not stack:`.
+
+#### 3. LeetCode 678: Valid Parenthesis String
+Learned how to handle wildcards (`*`) that can be `(`, `)`, or `""`. Explored two approaches:
+
+* **The Two-Stack Approach ($O(n)$ space):** 
+  * Instead of storing characters, store the **indices** of `(` and `*` in two separate stacks.
+  * When encountering a `)`, pop from the open stack first. If empty, pop from the star stack.
+  * At the end, match remaining `(` with `*`. A `*` can only cancel a `(` if it appears *after* it in the string (`open_index < star_index`).
+
+* **The Greedy Approach ($O(1)$ space):**
+  * Tracks a range of possibilities using `min_open` and `max_open`.
+  * `max_open` assumes every `*` is a `(`. If it drops below 0, it's an instant failure.
+  * `min_open` assumes every `*` is a `)`. If it drops below 0, we reset it to 0 (effectively changing a `*` from a `)` to an empty string `""`).
+  * Valid if `min_open == 0` at the end.
+
+### 💻 Code Snippet: Two-Stack Solution for LC 678
+```python
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        openst = []
+        starst = []
+        
+        for i, ch in enumerate(s):
+            if ch == "(":
+                openst.append(i)
+            elif ch == "*":
+                starst.append(i)
+            elif ch == ")":
+                if openst:
+                    openst.pop()
+                elif starst:
+                    starst.pop()
+                else: 
+                    return False
+                    
+        # Match remaining left brackets with stars
+        while openst and starst:
+            if openst[-1] > starst[-1]: # Star is trapped behind the bracket
+                return False
+            else:
+                openst.pop()
+                starst.pop()
+                
+        return len(openst) == 0
