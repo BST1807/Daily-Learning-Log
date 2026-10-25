@@ -1,0 +1,35 @@
+📌 Sequence Models & Transformers
+Category: Machine Learning & Natural Language Processing
+Tags: Deep Learning, NLP, RNN, LSTM, Seq2Seq, Transformers, Attention Mechanism
+
+Recurrent Neural Networks (RNN)
+The Concept: Sequential processing with a running memory.
+
+Mechanism: Processes data sequentially (word-by-word) rather than all at once. It maintains a hidden "memory" state that updates as it passes context from previous words to the next.
+
+Limitation: Suffers from the "vanishing gradient" problem. It has poor short-term memory, meaning the mathematical signal from early words fades by the time it reaches the end of a long sentence.
+
+Long Short-Term Memory (LSTM)
+The Concept: An advanced RNN equipped with a dedicated memory track and management gates.
+
+Mechanism: Contains internal mathematical checkpoints (gates) that actively decide what past information to remember, what to forget, and what new context to add.
+
+Impact: Handled longer text sequences far better than standard RNNs and remained the industry standard for NLP until 2017.
+
+Sequence-to-Sequence (Seq2Seq)
+The Concept: An architectural blueprint for transforming one sequence into another (e.g., machine translation).
+
+Mechanism: Splits the task into two networks:
+
+Encoder: Reads the input sequence and compresses its meaning into a single, dense matrix called a Context Vector.
+
+Decoder: Unpacks the Context Vector to generate the output sequence.
+
+Limitation: The Context Vector acts as an information bottleneck. Compressing long paragraphs into a single mathematical vector inevitably causes information loss.
+
+Self-Attention & Transformers
+The Concept: Processing the whole picture at once instead of sequentially.
+
+Mechanism: The core innovation behind the Transformer architecture (introduced in Attention Is All You Need). Instead of reading sequentially, it analyzes the entire sequence simultaneously and maps out the mathematical relationship (attention weight) between every single word and every other word in the text.
+
+Impact: Eliminated the Context Vector bottleneck and the need for sequential processing, allowing for massive parallelization on GPUs. This enabled training on internet-scale datasets, powering modern LLMs like ChatGPT.
